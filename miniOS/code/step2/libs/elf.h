@@ -3,7 +3,7 @@
 
 #include <types.h>
 
-#define ELF_MAGIC   0x464C457FU         // "\x7FELF" in little endian
+#define ELF_MAGIC   0x464C457FU      // U:无符号数 "\x7FELF" in little endian
 
 /* file header */
 struct elfhdr {

@@ -29,23 +29,23 @@ static inline void outb(uint16_t port, uint8_t data) __attribute__((always_inlin
 static inline void outw(uint16_t port, uint16_t data) __attribute__((always_inline));
 
 /* 从指定端口读取一个字节长的数据 */
-static inline uint8_t
-inb(uint16_t port) {
+static inline uint8_t inb(uint16_t port)
+{
     uint8_t data;
     asm volatile ("inb %1, %0" : "=a" (data) : "d" (port) : "memory");
     return data;
 }
 
 /* 从指定端口读取一个字长（两个字节长）的数据 */
-static inline uint16_t
-inw(uint16_t port) {
+static inline uint16_t inw(uint16_t port)
+{
 	uint16_t data = 0;
 	asm volatile ("inw %1, %0" : "=a" (data) : "d" (port) : "memory");
 	return data;
 }
 
-static inline void
-insl(uint32_t port, void *addr, int cnt) {
+static inline void insl(uint32_t port, void *addr, int cnt)
+{
     asm volatile (
         "cld;"
         "repne; insl;"
@@ -55,14 +55,14 @@ insl(uint32_t port, void *addr, int cnt) {
 }
 
 /* 向指定端口写入一个字节长的数据 */
-static inline void
-outb(uint16_t port, uint8_t data) {
+static inline void outb(uint16_t port, uint8_t data)
+{
     asm volatile ("outb %0, %1" :: "a" (data), "d" (port) : "memory");
 }
 
 /* 向指定端口写入一个字长（两个字节长）的数据 */
-static inline void
-outw(uint16_t port, uint16_t data) {
+static inline void outw(uint16_t port, uint16_t data)
+{
     asm volatile ("outw %0, %1" :: "a" (data), "d" (port) : "memory");
 }
 
